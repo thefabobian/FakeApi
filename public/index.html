@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management and Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/logicCart.js" defer></script>
+    <script src="js/productManagement.js" defer></script>
+</head>
+<body>
+    <h1>Product List</h1>
+    <div id="products"></div>
+    
+    <!-- Botón del Carrito -->
+    <button id="cart-button">
+        <img src="imgs/imagen carrito.png" alt="Carrito" id="cart-icon">
+        <span id="cart-count">0</span>
+    </button>
+
+    <!-- Ventana Modal del Carrito -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <div>Total: $<span id="total-price">0.00</span></div>
+        </div>
+    </div>
+
+    <!-- Botón de Product Management -->
+    <button id="manage-product-button">Manage Products</button>
+
+    <!-- Ventana Modal de Product Management -->
+    <div id="product-management-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Manage Products</h2>
+            <!-- Formulario para agregar un nuevo producto -->
+            <div id="add-product-form">
+                <h2>Add New Product</h2>
+                <form id="add-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
+
+                    <label for="image">Image URL:</label>
+                    <input type="text" id="image" name="image" required>
+
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+
+            <!-- Lista de productos y formulario para modificar o eliminar productos -->
+            <div id="product-list">
+                <h2>Products</h2>
+                <ul id="products-list"></ul>
+
+                <!-- Formulario para modificar un producto -->
+                <div id="edit-product-form">
+                    <h2>Edit Product</h2>
+                    <form id="edit-form">
+                        <input type="hidden" id="edit-id" name="id">
+
+                        <label for="edit-name">Name:</label>
+                        <input type="text" id="edit-name" name="name" required>
+
+                        <label for="edit-description">Description:</label>
+                        <textarea id="edit-description" name="description" required></textarea>
+
+                        <label for="edit-price">Price:</label>
+                        <input type="number" id="edit-price" name="price" step="0.01" required>
+
+                        <label for="edit-image">Image URL:</label>
+                        <input type="text" id="edit-image" name="image" required>
+
+                        <button type="submit">Update Product</button>
+                        <button type="button" id="delete-button">Delete Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+  
+
+

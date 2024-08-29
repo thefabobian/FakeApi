@@ -1,0 +1,337 @@
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fefae0; /* Crema suave de fondo */
+}
+
+/* Estilo del botón del carrito */
+#cart-button {
+  position: fixed; /* Fija el botón en la pantalla */
+  top: 20px; /* Distancia desde el borde superior */
+  right: 20px; /* Distancia desde el borde derecho */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px; /* Ajusta el relleno para acomodar la imagen */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 16px;
+  display: flex; /* Usar flexbox para alinear la imagen y el conteo */
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 8px; /* Espacio entre la imagen y el conteo */
+  z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
+}
+
+#cart-button:hover {
+  background-color: #0056b3;
+}
+
+#cart-icon {
+  width: 20px; /* Tamaño de la imagen */
+  height: 20px; /* Tamaño de la imagen */
+}
+
+#cart-count {
+  position: relative;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex; /* Usar flexbox para centrar el texto en el contador */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor de productos */
+#products {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  gap: 20px; /* Espacio más amplio entre los elementos */
+  margin: 20px;
+}
+
+/* Estilo de cada producto */
+.product {
+  border: 1px solid #d1c4e9; /* Borde lila pastel */
+  border-radius: 8px;
+  padding: 16px; /* Espacio interno aumentado */
+  background-color: #e8f5e9; /* Fondo verde pastel claro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos en el contenedor */
+  text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+/* Imagen del producto */
+.product img {
+  width: 150px; /* Tamaño de la imagen */
+  height: 150px; /* Tamaño de la imagen */
+  object-fit: contain; /* Ajusta la imagen sin distorsionarla */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-bottom: 15px; /* Espacio inferior de la imagen */
+}
+
+/* Títulos del producto */
+.product h4 {
+  font-size: 1.2em;
+  margin: 12px 0;
+}
+
+/* Descripción del producto */
+.product p {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 12px;
+  text-align: left; /* Alinea la descripción a la izquierda */
+  width: 100%; /* Asegura que la descripción ocupe todo el ancho disponible */
+}
+
+/* Precio del producto */
+.product .price {
+  font-size: 1.1em;
+  color: #333;
+  text-align: left; /* Alinea el precio a la izquierda */
+  width: 100%; /* Asegura que el precio ocupe todo el ancho disponible */
+  margin-bottom: 12px;
+}
+
+/* Botón para agregar al carrito */
+.product button {
+  background-color: #FF8C00; /* Color del botón para agregar al carrito */
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 12px; /* Espacio superior del botón */
+  text-align: center; /* Centra el texto del botón */
+}
+
+.product button:hover {
+  background-color: #28a745; /* Color verde cuando el mouse está sobre el botón */
+}
+
+/* Estilo del botón de Product Management */
+#manage-product-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+#manage-product-button:hover {
+  background-color: #45a049;
+}
+
+/* Ventana modal de Product Management */
+#product-management-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  padding-top: 50px;
+}
+
+/* Contenedor del contenido de la ventana modal */
+#product-management-modal .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  animation: fadeIn 0.5s;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Botón para cerrar la ventana modal */
+#product-management-modal .close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#product-management-modal .close-modal:hover,
+#product-management-modal .close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Lista de productos en la ventana modal */
+#product-management-modal ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#product-management-modal ul li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botones en la lista de productos */
+#product-management-modal ul li button {
+  padding: 5px 10px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+#product-management-modal ul li button:hover {
+  background-color: #0b7dda;
+}
+
+/* Estilo de la ventana modal */
+.modal {
+  display: none; /* Oculta la ventana modal por defecto */
+  position: fixed;
+  z-index: 1000; /* Asegura que la ventana modal esté sobre el contenido */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho de la ventana modal */
+  max-width: 600px; /* Ancho máximo de la ventana modal */
+  border-radius: 8px;
+  position: relative; /* Necesario para posicionar el botón de cierre */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* Distancia desde el borde superior del modal */
+  right: 10px; /* Distancia desde el borde derecho del modal */
+  background-color: #dc3545; /* Color de fondo del botón de cierre */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%; /* Hace que el botón tenga una forma circular */
+  font-size: 18px; /* Tamaño del texto */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex; /* Alinea el contenido del botón */
+  align-items: center; /* Centra el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+.close-button:hover {
+  background-color: #c82333; /* Color de fondo del botón cuando se pasa el mouse sobre él */
+}
+
+.close-button:active {
+  transform: scale(0.95); /* Efecto de pulsación cuando se hace clic */
+}
+
+#cart-items {
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#cart-items li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+/* Imagen del producto en el carrito */
+#cart-items img {
+  width: 60px; /* Tamaño reducido de la imagen en el carrito */
+  height: 60px; /* Tamaño reducido de la imagen en el carrito */
+  object-fit: contain; /* Ajusta la imagen sin distorsionarla */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-right: 10px;
+}
+
+/* Estilo de los botones */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Botones específicos */
+button.increase {
+  background-color: #28a745; /* Color verde para aumentar cantidad */
+}
+
+button.increase:hover {
+  background-color: #218838;
+}
+
+button.decrease {
+  background-color: #ffc107; /* Color amarillo para disminuir cantidad */
+}
+
+button.decrease:hover {
+  background-color: #e0a800;
+}
+
+button.remove {
+  background-color: #dc3545; /* Color rojo para eliminar */
+  color: white;
+}
+
+button.remove:hover {
+  background-color: #c82333;
+}
+
+

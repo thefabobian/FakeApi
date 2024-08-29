@@ -1,0 +1,12 @@
+config:
+  target: 'http://localhost:3000'  # Cambia esto por la URL de tu API
+  phases:
+    - duration: 30       # Duración de la prueba en segundos
+      arrivalRate: 3000   # Número de usuarios que llegan por segundo
+scenarios:
+  - flow:
+    - get:
+        url: '/products'  # Cambia esto por el endpoint que quieras probar
+
+
+# para utiliza el test "artillery run load-test-config.yml"
